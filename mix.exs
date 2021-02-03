@@ -34,7 +34,7 @@ defmodule SlipstreamHoneycomb.MixProject do
     ]
   end
 
-  defp elixirc_paths(:test), do: ["lib", "test/fixtures"]
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
   def application do
@@ -43,11 +43,15 @@ defmodule SlipstreamHoneycomb.MixProject do
 
   defp deps do
     [
+      {:slipstream, "~> 0.3"},
+      {:telemetry, "~> 0.4"},
+      {:opencensus_honeycomb, "~> 0.2.0"},
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       # test
-      {:bless, "~> 1.0"},
-      {:convene, "~> 0.2", organization: "cuatro", only: [:dev, :test]},
+      {:bless, "~> 1.0", only: [:dev, :test]},
+      {:mox, "~> 1.0", only: :test},
+      {:credo, "~> 1.0", only: [:dev, :test]},
       {:excoveralls, "~> 0.7", only: :test}
     ]
   end
