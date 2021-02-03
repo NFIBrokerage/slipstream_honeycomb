@@ -1,5 +1,5 @@
 repository:
-  name: slipstream_telemetry_honeycomb
+  name: slipstream_honeycomb
   description: |
     An adapter between slipstream telemetry and honeycomb events
   private: true

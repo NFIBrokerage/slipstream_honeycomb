@@ -1,4 +1,4 @@
-defmodule SlipstreamTelemetryHoneycomb do
+defmodule SlipstreamHoneycomb do
   @moduledoc """
   An adapter between slipstream telemetry and honeycomb events
   """

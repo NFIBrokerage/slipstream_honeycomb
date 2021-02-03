@@ -1,4 +1,4 @@
-defmodule SlipstreamTelemetryHoneycombTest do
+defmodule SlipstreamHoneycombTest do
   use ExUnit.Case
 end
 

@@ -1,4 +1,4 @@
-defmodule SlipstreamTelemetryHoneycomb.MixProject do
+defmodule SlipstreamHoneycomb.MixProject do
   use Mix.Project
 
   @version_file Path.join(__DIR__, ".version")
@@ -12,7 +12,7 @@ defmodule SlipstreamTelemetryHoneycomb.MixProject do
 
   def project do
     [
-      app: :slipstream_telemetry_honeycomb,
+      app: :slipstream_honeycomb,
       version: @version,
       elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -28,9 +28,8 @@ defmodule SlipstreamTelemetryHoneycomb.MixProject do
       test_coverage: [tool: ExCoveralls],
       package: package(),
       description: description(),
-      source_url:
-        "https://github.com/NFIBrokerage/slipstream_telemetry_honeycomb",
-      name: "SlipstreamTelemetryHoneycomb",
+      source_url: "https://github.com/NFIBrokerage/slipstream_honeycomb",
+      name: "SlipstreamHoneycomb",
       docs: docs()
     ]
   end
@@ -55,13 +54,12 @@ defmodule SlipstreamTelemetryHoneycomb.MixProject do
 
   defp package do
     [
-      name: "slipstream_telemetry_honeycomb",
+      name: "slipstream_honeycomb",
       files: ~w(lib .formatter.exs mix.exs README.md .version),
       licenses: [],
       organization: "cuatro",
       links: %{
-        "GitHub" =>
-          "https://github.com/NFIBrokerage/slipstream_telemetry_honeycomb"
+        "GitHub" => "https://github.com/NFIBrokerage/slipstream_honeycomb"
       }
     ]
   end
