@@ -43,8 +43,7 @@ defmodule SlipstreamHoneycomb.MixProject do
 
   defp deps do
     [
-      # {:slipstream, "~> 0.3"},
-      {:slipstream, path: "../slipstream"},
+      {:slipstream, "~> 0.3"},
       {:telemetry, "~> 0.4"},
       {:opencensus_honeycomb, "~> 0.2.0"},
       # docs
