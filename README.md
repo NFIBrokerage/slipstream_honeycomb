@@ -9,7 +9,7 @@ An adapter between slipstream telemetry and honeycomb events
 [Honeycomb](https://www.honeycomb.io/) is an observability tool with a sweet
 query interface and distributed tracing support.
 
-At NFIBrokerage, we :heart: honeycomb because empowers us to debug issues in
+At NFIBrokerage, we :heart: honeycomb because it empowers us to debug issues in
 fractions of time (and with far more certainty) than log ingestion services,
 and lets us understand our system in real-time.
 
