@@ -78,7 +78,8 @@ defmodule Slipstream.Honeycomb.Connection do
     %Event{
       time: metadata.start_time,
       data: %{
-        state: inspect(metadata.state),
+        start_state: inspect(metadata.start_state),
+        end_state: inspect(metadata.end_state),
         traceId: metadata.trace_id,
         parentId: metadata.connection_id,
         id: metadata.span_id,

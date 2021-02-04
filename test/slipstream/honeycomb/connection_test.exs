@@ -42,7 +42,8 @@ defmodule Slipstream.Honeycomb.ConnectionTest do
     assert event.data.id == metadata.connection_id
 
     metadata = %{
-      state: %{},
+      start_state: %{},
+      end_state: %{},
       connection_id: "foo",
       span_id: "baz",
       trace_id: "bar",
@@ -63,7 +64,8 @@ defmodule Slipstream.Honeycomb.ConnectionTest do
     assert_receive {:send_event, event}
 
     assert event.time == metadata.start_time
-    assert event.data.state == "%{}"
+    assert event.data.start_state == "%{}"
+    assert event.data.end_state == "%{}"
     assert event.data.traceId == metadata.trace_id
     assert event.data.parentId == metadata.connection_id
     assert event.data.id == metadata.span_id
