@@ -43,10 +43,12 @@ defmodule Slipstream.Honeycomb.Connection do
     {:noreply, state}
   end
 
+  @doc false
   def handle_event(event, measurements, metadata, _state) do
     GenServer.cast(__MODULE__, {event, measurements, metadata})
   end
 
+  @doc false
   @impl GenServer
   def handle_cast({event, measurements, metadata}, state) do
     {event, measurements, metadata}

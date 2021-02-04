@@ -1,6 +1,7 @@
 defmodule SlipstreamHoneycomb.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/NFIBrokerage/slipstream_honeycomb"
   @version_file Path.join(__DIR__, ".version")
   @external_resource @version_file
   @version (case Regex.run(~r/^v([\d\.\w-]+)/, File.read!(@version_file),
@@ -28,7 +29,7 @@ defmodule SlipstreamHoneycomb.MixProject do
       test_coverage: [tool: ExCoveralls],
       package: package(),
       description: description(),
-      source_url: "https://github.com/NFIBrokerage/slipstream_honeycomb",
+      source_url: @source_url,
       name: "SlipstreamHoneycomb",
       docs: docs()
     ]
@@ -60,10 +61,10 @@ defmodule SlipstreamHoneycomb.MixProject do
     [
       name: "slipstream_honeycomb",
       files: ~w(lib .formatter.exs mix.exs README.md .version),
-      licenses: [],
-      organization: "cuatro",
+      licenses: ["Apache-2.0"],
       links: %{
-        "GitHub" => "https://github.com/NFIBrokerage/slipstream_honeycomb"
+        "GitHub" => @source_url,
+        "CHANGELOG" => @source_url <> "/blobs/main/CHANGELOG.md"
       }
     ]
   end
@@ -74,9 +75,6 @@ defmodule SlipstreamHoneycomb.MixProject do
 
   defp docs do
     [
-      # do you reference other projects in your documentation? if so, add
-      # them to the :deps key here. for an example, see
-      # https://github.com/NFIBrokerage/projection/blob/5f406872d00156e2b94cfa9fae8e92a1aa4c177b/mix.exs#L88-L90
       deps: [],
       extras: [
         "CHANGELOG.md"
