@@ -4,12 +4,43 @@
 
 An adapter between slipstream telemetry and honeycomb events
 
+## Connection Telemetry
+
+SlipstreamHoneycomb currently captures the only telemetry which Slipstream
+emits: connection messages.
+
+These connection messages are fairly low-level and are very quick (usually
+a matter of microseconds). Below is an example screenshot of a trace in our
+Honeycomb:
+
+![example](guides/connection-example.png)
+
+The long purple bar is the connection, which was open for ~150s in this case.
+That came from the `[:slipstream, :connection, :connect, :stop]` event. The
+other spans of this connection are `[:slipstream, :connection, :handle,
+:stop]`. From top to bottom, we see from the example:
+
+- the initial `handle_continue(:connect, ..`
+- the gun connection coming up (`{:gun_up, conn, :http}`)
+- the gun upgrade which is decoded into the `%Slipstream.Events.ChannelConnected{}`
+  event
+- a JoinTopic command from the client
+- a `:gun_ws` message that decoded into a TopicJoinSucceeded event
+- a big push of data from the remote server (decoded to MessageReceived event)
+
+and then much later (~30s), we see:
+
+- a SendHeartbeat command, followed by
+- the HeartbeatAcknowledged
+
+(x4). And finally, the parent process exits with a ParentProcessExited event.
+
 ## Installation
 
 ```elixir
 def deps do
   [
-    {:slipstream_honeycomb, "~> 1.0", organization: "cuatro"}
+    {:slipstream_honeycomb, "~> 0.1", organization: "cuatro"}
   ]
 end
 ```
