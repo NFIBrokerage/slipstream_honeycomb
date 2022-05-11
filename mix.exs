@@ -44,9 +44,9 @@ defmodule SlipstreamHoneycomb.MixProject do
 
   defp deps do
     [
-      {:slipstream, "~> 0.3"},
-      {:telemetry, "~> 0.4"},
-      {:opencensus_honeycomb, "~> 0.2.0"},
+      {:slipstream, "~> 0.3 or ~> 1.0"},
+      {:telemetry, "~> 0.4 or ~> 1.0"},
+      {:opencensus_honeycomb, "~> 0.2"},
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       # test
