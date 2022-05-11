@@ -62,37 +62,45 @@ defmodule Slipstream.Honeycomb.Connection do
          {~w[slipstream connection connect stop]a, %{duration: duration},
           metadata}
        ) do
-    %Event{
-      time: metadata.start_time,
-      data: %{
-        state: inspect(metadata.state),
-        traceId: metadata.trace_id,
-        id: metadata.connection_id,
-        durationMs: convert_time(duration)
+    struct(
+      Event,
+      %{
+        time: metadata.start_time,
+        data: %{
+          state: inspect(metadata.state),
+          traceId: metadata.trace_id,
+          id: metadata.connection_id,
+          durationMs: convert_time(duration)
+        },
+        samplerate: 1.0
       }
-    }
+    )
   end
 
   defp map_to_event(
          {~w[slipstream connection handle stop]a, %{duration: duration},
           metadata}
        ) do
-    %Event{
-      time: metadata.start_time,
-      data: %{
-        start_state: inspect(metadata.start_state),
-        end_state: inspect(metadata.end_state),
-        traceId: metadata.trace_id,
-        parentId: metadata.connection_id,
-        id: metadata.span_id,
-        durationMs: convert_time(duration),
-        raw_message: inspect(metadata.raw_message),
-        message: inspect(metadata.message),
-        events: inspect(metadata.events),
-        built_events: inspect(metadata.built_events),
-        return: metadata.return
+    struct(
+      Event,
+      %{
+        time: metadata.start_time,
+        data: %{
+          start_state: inspect(metadata.start_state),
+          end_state: inspect(metadata.end_state),
+          traceId: metadata.trace_id,
+          parentId: metadata.connection_id,
+          id: metadata.span_id,
+          durationMs: convert_time(duration),
+          raw_message: inspect(metadata.raw_message),
+          message: inspect(metadata.message),
+          events: inspect(metadata.events),
+          built_events: inspect(metadata.built_events),
+          return: metadata.return
+        },
+        samplerate: 1.0
       }
-    }
+    )
   end
 
   defp send_event(event) do
