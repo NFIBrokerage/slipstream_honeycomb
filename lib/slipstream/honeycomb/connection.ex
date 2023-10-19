@@ -4,7 +4,7 @@ defmodule Slipstream.Honeycomb.Connection do
   emits them to Honeycomb
   """
 
-  @sender Application.get_env(
+  @sender Application.compile_env(
             :slipstream_honeycomb,
             :honeycomb_sender,
             Opencensus.Honeycomb.Sender

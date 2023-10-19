@@ -3,7 +3,7 @@ defmodule Slipstream.Honeycomb.ConnectionTest do
 
   import Mox
   setup :verify_on_exit!
-  @sender Application.fetch_env!(:slipstream_honeycomb, :honeycomb_sender)
+  @sender Application.compile_env!(:slipstream_honeycomb, :honeycomb_sender)
 
   test "honeycomb events are emitted on telemetry events" do
     pid = start_supervised!(Slipstream.Honeycomb.Connection)
